@@ -2,12 +2,13 @@ module Middleman
   module Robots
     class Extension < ::Middleman::Extension
       option :rules, [], 'List of rules about sitemap.xml'
-      option :sitemap, false, 'Relative path of sitemap.xml'
+      option :sitemap, false, 'URI of sitemap.xml'
 
       def initialize(app, options_hash = {}, &block)
         super
 
-        data = rules(options.rules)
+        data = rules(options.rules) + sitemap(options.sitemap)
+        data.gsub!(/\n+$/, "\n")
 
         build_dir = app.build_dir
         app.after_build do
@@ -21,7 +22,6 @@ module Middleman
         return '' if rules.empty?
 
         data = []
-
         rules.each do |rule|
           row = []
           if (rule["user-agent"])
@@ -42,10 +42,14 @@ module Middleman
             end
           end
 
-          data << row.join("\n") + "\n" if row.length > 0
+          data << row.join("\n") + "\n\n" if row.length > 0
         end
 
-        data.join("\n")
+        data.join('')
+      end
+
+      def sitemap(path)
+        path ? "Sitemap: #{path}" : ""
       end
     end
   end
