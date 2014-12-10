@@ -27,7 +27,7 @@ Feature: Middleman-Robots
     When I cd to "build"
     Then the file "robots.txt" should contain exactly:
       """
-      user-agent: *
+      User-Agent: *
 
       """
 
@@ -48,7 +48,7 @@ Feature: Middleman-Robots
     When I cd to "build"
     Then the file "robots.txt" should contain exactly:
       """
-      user-agent: *
+      User-Agent: *
       Disallow: /tmp/*
       Disallow: /something/dir/file_disallow.html
 
@@ -71,7 +71,7 @@ Feature: Middleman-Robots
     When I cd to "build"
     Then the file "robots.txt" should contain exactly:
       """
-      user-agent: *
+      User-Agent: *
       Allow: /allow/*
       Allow: /something/dir/file_allow.html
 
@@ -95,7 +95,7 @@ Feature: Middleman-Robots
     When I cd to "build"
     Then the file "robots.txt" should contain exactly:
       """
-      user-agent: *
+      User-Agent: *
       Disallow: /tmp/*
       Disallow: /something/dir/file_disallow.html
       Allow: /allow/*
@@ -126,13 +126,13 @@ Feature: Middleman-Robots
     When I cd to "build"
     Then the file "robots.txt" should contain exactly:
       """
-      user-agent: Googlebot
+      User-Agent: Googlebot
       Disallow: /tmp/*
       Disallow: /something/dir/file_disallow.html
       Allow: /allow/*
       Allow: /something/dir/file_allow.html
 
-      user-agent: Googlebot-Image
+      User-Agent: Googlebot-Image
       Disallow: /tmp/*
       Disallow: /something/dir/file_disallow.html
       Allow: /allow/*
@@ -181,13 +181,13 @@ Feature: Middleman-Robots
     When I cd to "build"
     Then the file "robots.txt" should contain exactly:
       """
-      user-agent: Googlebot
+      User-Agent: Googlebot
       Disallow: /tmp/*
       Disallow: /something/dir/file_disallow.html
       Allow: /allow/*
       Allow: /something/dir/file_allow.html
 
-      user-agent: Googlebot-Image
+      User-Agent: Googlebot-Image
       Disallow: /tmp/*
       Disallow: /something/dir/file_disallow.html
       Allow: /allow/*
