@@ -10,5 +10,5 @@ Feature: Middleman-Robots
       """
     And a successfully built app at "basic-app"
     When I cd to "build"
-    Then the file named "robots.txt" should exist
+    Then a file named "robots.txt" should exist
 
