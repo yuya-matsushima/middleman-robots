@@ -1,5 +1,8 @@
 # Middleman::Robots
 
+[![Gem Version](https://badge.fury.io/rb/middleman-robots.svg)](http://badge.fury.io/rb/middleman-robots)
+[![Build Status](https://travis-ci.org/yterajima/middleman-robots.svg?branch=master)](https://travis-ci.org/yterajima/middleman-robots)
+
 `middleman-robots` is an extension of [Middleman](http://middlemanapp.com/). This can create `robots.txt` when build.
 
 ## Installation
