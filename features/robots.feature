@@ -1,6 +1,6 @@
 Feature: Middleman-Robots
 
-  Scenario: Basic Usage
+  Scenario: Empty Usage
     Given a fixture app "basic-app"
     And a file named "config.rb" with:
       """
@@ -77,7 +77,7 @@ Feature: Middleman-Robots
 
       """
 
-  Scenario: All Rules option
+  Scenario: All Rules
     Given a fixture app "basic-app"
     And a file named "config.rb" with:
       """
@@ -103,7 +103,7 @@ Feature: Middleman-Robots
 
       """
 
-  Scenario: Multiple Rules option
+  Scenario: Multiple Rules
     Given a fixture app "basic-app"
     And a file named "config.rb" with:
       """
