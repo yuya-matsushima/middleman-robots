@@ -21,10 +21,28 @@ module Middleman
         return '' if rules.empty?
 
         data = []
+
         rules.each do |rule|
+          row = []
           if (rule["user-agent"])
-            data << "user-agent: #{rule["user-agent"]}"
+            row << "user-agent: #{rule["user-agent"]}"
           end
+
+          if (rule[:disallow])
+            rule[:disallow].each do |path|
+              path = "/" + path unless /^\// =~ path
+              row << "Disallow: #{path}"
+            end
+          end
+
+          if (rule[:allow])
+            rule[:allow].each do |path|
+              path = "/" + path unless /^\// =~ path
+              row << "Allow: #{path}"
+            end
+          end
+
+          data << row.join("\n") + "\n" if row.length > 0
         end
 
         data.join("\n")
