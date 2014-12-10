@@ -12,3 +12,17 @@ Feature: Middleman-Robots
     When I cd to "build"
     Then a file named "robots.txt" should exist
 
+  Scenario: Rules option with user-agent
+    Given a fixture app "basic-app"
+    And a file named "config.rb" with:
+      """
+      configure :build do
+        activate :robots, :rules => [
+          {'user-agent' => '*'}
+        ]
+      end
+      """
+    And a successfully built app at "basic-app"
+    When I cd to "build"
+    Then the file "robots.txt" should contain "user-agent: *"
+
