@@ -11,6 +11,7 @@ Feature: Middleman-Robots
     And a successfully built app at "basic-app"
     When I cd to "build"
     Then a file named "robots.txt" should exist
+    And the output should contain "middleman-robots: robots.txt created"
 
   Scenario: Rules option with user-agent
     Given a fixture app "basic-app"
