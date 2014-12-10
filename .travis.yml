@@ -1,0 +1,14 @@
+language: ruby
+script: "bundle exec cucumber"
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - 2.1.2
+  - jruby-19mode
+env: TEST=true TRAVIS=true
+gemfile:
+  - Gemfile
+notifications:
+  webhooks:
+    - https://idobata.io/hook/travis_ci/80f5bf2c-144d-48e4-9283-3a5d4d5f53e2
+
