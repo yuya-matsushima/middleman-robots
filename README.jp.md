@@ -55,13 +55,13 @@ configure :build do
     :rules => [
       {
         :user_agent => 'Googlebot',
-        :disallow =>  %w(tmp/* /something/dir/file_disallow.html),
-        :allow =>  %w(allow/* /something/dir/file_allow.html)
+        :disallow =>  %w(tmp/ /something/dir/file_disallow.html),
+        :allow =>  %w(allow/ /something/dir/file_allow.html)
       },
       {
         :user_agent => 'Googlebot-Image',
-        :disallow =>  %w(tmp/* /something/dir/file_disallow.html),
-        :allow =>  %w(allow/* /something/dir/file_allow.html)
+        :disallow =>  %w(tmp/ /something/dir/file_disallow.html),
+        :allow =>  %w(allow/ /something/dir/file_allow.html)
       }
     ],
     :sitemap => "http://example.com/sitemap.xml"
@@ -72,15 +72,15 @@ end
 
 ```
 User-Agent: Googlebot
-Disallow: /tmp/*
+Disallow: /tmp/
 Disallow: /something/dir/file_disallow.html
-Allow: /allow/*
+Allow: /allow/
 Allow: /something/dir/file_allow.html
 
 User-Agent: Googlebot-Image
-Disallow: /tmp/*
+Disallow: /tmp/
 Disallow: /something/dir/file_disallow.html
-Allow: /allow/*
+Allow: /allow/
 Allow: /something/dir/file_allow.html
 
 Sitemap: http://example.com/sitemap.xml
