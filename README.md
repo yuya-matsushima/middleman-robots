@@ -29,13 +29,13 @@ Basic usage:
 # config.rb
 configure :build do
   activate :robots, :rules => [
-    {'user-agent' => '*', :allow => %w(/)}
+    {:user_agent => '*', :allow => %w(/)}
   ],
   :sitemap => "http://example.com/sitemap.xml"
 end
 ```
 
-You can use options, `rules` {[`user-agent`(string), `allow`(array), `disallow`(array)]} and `sitemap`. Like this:
+You can use options, `:rules` {[`:user_agent`(string), `:allow`(array), `:disallow`(array)]} and `:sitemap`. Like this:
 
 ```ruby
 # config.rb
@@ -43,12 +43,12 @@ configure :build do
   activate :robots,
     :rules => [
       {
-        'user-agent' => 'Googlebot',
+        :user_agent => 'Googlebot',
         :disallow =>  %w(tmp/* /something/dir/file_disallow.html),
         :allow =>  %w(allow/* /something/dir/file_allow.html)
       },
       {
-        'user-agent' => 'Googlebot-Image',
+        :user_agent => 'Googlebot-Image',
         :disallow =>  %w(tmp/* /something/dir/file_disallow.html),
         :allow =>  %w(allow/* /something/dir/file_allow.html)
       }
@@ -59,8 +59,9 @@ end
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/middleman-robots/fork )
+1. Fork it ( https://github.com/yterajima/middleman-robots/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
