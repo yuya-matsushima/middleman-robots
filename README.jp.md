@@ -3,27 +3,27 @@
 [![Gem Version](https://badge.fury.io/rb/middleman-robots.svg)](http://badge.fury.io/rb/middleman-robots)
 [![Build Status](https://travis-ci.org/yterajima/middleman-robots.svg?branch=master)](https://travis-ci.org/yterajima/middleman-robots)
 
-`middleman-robots` is an extension of [Middleman](http://middlemanapp.com/). This can create `robots.txt` when build.
+`middleman-robots` は [Middleman](http://middlemanapp.com/) の拡張機能です。 build 実行時に `config.rb` に記述されたルールに基いて `robots.txt` を作ります。
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Gemfile に次の行を追加してください:
 
 ```ruby
 gem 'middleman-robots'
 ```
 
-And then execute:
+コマンドを実行します:
 
     $ bundle
 
-Or install it yourself as:
+Gemfile を使わずにインストールする場合は次のコマンドを実行してください:
 
     $ gem install middleman-robots
 
-## Usage
+## 使い方
 
-Basic usage:
+基本的な使い方です:
 
 ```ruby
 # config.rb
@@ -35,7 +35,7 @@ configure :build do
 end
 ```
 
-Created `robots.txt`:
+作成される `robots.txt`:
 
 ```
 User-Agent: *
@@ -45,7 +45,8 @@ Sitemap: http://example.com/sitemap.xml
 
 ```
 
-You can use options, `:rules` {[`:user_agent`(string), `:allow`(array), `:disallow`(array)]} and `:sitemap`. Like this:
+
+オプションには `:rules` {[`:user_agent`(string), `:allow`(array), `:disallow`(array)]} と `:sitemap` を指定できます。すべてのオプションを指定すると次のようになります:
 
 ```ruby
 # config.rb
@@ -67,7 +68,7 @@ configure :build do
 end
 ```
 
-Created `robots.txt`:
+作成される `robots.txt`:
 
 ```
 User-Agent: Googlebot
