@@ -35,6 +35,17 @@ configure :build do
 end
 ```
 
+作成される `robots.txt`:
+
+```
+User-Agent: *
+Allow: /
+
+Sitemap: http://example.com/sitemap.xml
+
+```
+
+
 オプションには `:rules` {[`:user_agent`(string), `:allow`(array), `:disallow`(array)]} と `:sitemap` を指定できます。すべてのオプションを指定すると次のようになります:
 
 ```ruby
@@ -55,6 +66,25 @@ configure :build do
     ],
     :sitemap => "http://example.com/sitemap.xml"
 end
+```
+
+作成される `robots.txt`:
+
+```
+User-Agent: Googlebot
+Disallow: /tmp/*
+Disallow: /something/dir/file_disallow.html
+Allow: /allow/*
+Allow: /something/dir/file_allow.html
+
+User-Agent: Googlebot-Image
+Disallow: /tmp/*
+Disallow: /something/dir/file_disallow.html
+Allow: /allow/*
+Allow: /something/dir/file_allow.html
+
+Sitemap: http://example.com/sitemap.xml
+
 ```
 
 ## Contributing

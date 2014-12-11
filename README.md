@@ -35,6 +35,16 @@ configure :build do
 end
 ```
 
+Created `robots.txt`:
+
+```
+User-Agent: *
+Allow: /
+
+Sitemap: http://example.com/sitemap.xml
+
+```
+
 You can use options, `:rules` {[`:user_agent`(string), `:allow`(array), `:disallow`(array)]} and `:sitemap`. Like this:
 
 ```ruby
@@ -55,6 +65,25 @@ configure :build do
     ],
     :sitemap => "http://example.com/sitemap.xml"
 end
+```
+
+Created `robots.txt`:
+
+```
+User-Agent: Googlebot
+Disallow: /tmp/*
+Disallow: /something/dir/file_disallow.html
+Allow: /allow/*
+Allow: /something/dir/file_allow.html
+
+User-Agent: Googlebot-Image
+Disallow: /tmp/*
+Disallow: /something/dir/file_disallow.html
+Allow: /allow/*
+Allow: /something/dir/file_allow.html
+
+Sitemap: http://example.com/sitemap.xml
+
 ```
 
 ## Contributing
