@@ -25,8 +25,10 @@ module Middleman
         data = []
         rules.each do |rule|
           row = []
-          if (rule["user-agent"])
-            row << "User-Agent: #{rule["user-agent"]}"
+
+          if (rule["user-agent"] || rule[:user_agent])
+            user_agent = rule[:user_agent] || rule["user-agent"]
+            row << "User-Agent: #{user_agent}"
           end
 
           if (rule[:disallow])
@@ -55,3 +57,4 @@ module Middleman
     end
   end
 end
+
