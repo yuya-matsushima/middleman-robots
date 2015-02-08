@@ -31,6 +31,26 @@ Feature: Middleman-Robots
 
       """
 
+  Scenario: Rules option with user_agent using block
+    Given a fixture app "basic-app"
+    And a file named "config.rb" with:
+      """
+      configure :build do
+        activate :robots do |r|
+          r.rules = [
+            {:user_agent => '*'}
+          ]
+        end
+      end
+      """
+    And a successfully built app at "basic-app"
+    When I cd to "build"
+    Then the file "robots.txt" should contain exactly:
+      """
+      User-Agent: *
+
+      """
+
   Scenario: Rules option with user-agent
     Given a fixture app "basic-app"
     And a file named "config.rb" with:
