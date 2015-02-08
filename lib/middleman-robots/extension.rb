@@ -15,7 +15,7 @@ module Middleman
           File.open(File.join(build_dir, "robots.txt"), "w") do |file|
             file.puts(data)
           end
-          puts "   middleman-robots: robots.txt created"
+          logger.info '== middleman-robots: robots.txt created =='
         end
       end
 
