@@ -1,14 +1,19 @@
 language: ruby
-script: "bundle exec cucumber"
+script: bundle exec cucumber
 rvm:
-  - 1.9.3
-  - 2.0.0
-  - 2.1.2
-  - jruby-19mode
+- ruby-head
+- jruby-head
+- jruby-19mode
+- 2.2
+- 2.1
+- 2.0
+- 1.9.3
+os:
+- linux
+- osx
 env: TEST=true TRAVIS=true
 gemfile:
-  - Gemfile
+- Gemfile
 notifications:
-  webhooks:
-    - https://idobata.io/hook/travis_ci/80f5bf2c-144d-48e4-9283-3a5d4d5f53e2
-
+  slack:
+    secure: C8xb94J4fstzAI7t9GcvKQieKc1k+ECA96ydcxDwBI1fAbupQjz4jafMwnOnD1g9QMe8hlykSNUlCXNCbcA9DZG7COjPZHCY3Icv1+0Dp44bBTDQldR8DPACPMU5Qe+pWoTZViPgJQ7tq2V9TXrGdOnOtkPTwZ9KtZrmNhxW7tM=
