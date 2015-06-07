@@ -9,7 +9,7 @@ module Middleman
 
       def initialize(app, options_hash = {}, &block)
         super
-        build_dir = app.build_dir
+        build_dir = app.config.build_dir
 
         data = rules(options.rules) + sitemap(options.sitemap)
         data.gsub!(/\n+$/, "\n")
