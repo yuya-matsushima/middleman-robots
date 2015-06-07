@@ -14,10 +14,9 @@ matrix:
   allow_failures:
   - rvm: ruby-head
   - rvm: jruby-head
-env: TEST=true TRAVIS=true
-script: bundle exec cucumber
-gemfile:
-- Gemfile
+script: bundle exec rake test
+cache: bundler
+env: TEST=true
 notifications:
   slack:
     secure: C8xb94J4fstzAI7t9GcvKQieKc1k+ECA96ydcxDwBI1fAbupQjz4jafMwnOnD1g9QMe8hlykSNUlCXNCbcA9DZG7COjPZHCY3Icv1+0Dp44bBTDQldR8DPACPMU5Qe+pWoTZViPgJQ7tq2V9TXrGdOnOtkPTwZ9KtZrmNhxW7tM=
