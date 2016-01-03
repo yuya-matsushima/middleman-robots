@@ -5,6 +5,8 @@
 
 `middleman-robots` is an extension of [Middleman](http://middlemanapp.com/). This can create `robots.txt` when build.
 
+This plugin support Middleman v3-stable and v4.
+
 ## Installation
 
 Add this line to your application's Gemfile:
