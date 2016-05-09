@@ -1,4 +1,4 @@
-Copyright (c) 2014 yterajima
+Copyright (c) 2014 Yuya Matsushima
 
 MIT License
 
