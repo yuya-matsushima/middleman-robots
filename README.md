@@ -24,12 +24,14 @@ Or install it yourself as:
     $ gem install middleman-robots
 
 ## Usage
-
+Important - if you set the `:build_dir` variable, make sure you set it before the `middleman-robots` settings code, otherwise default `/build` directory is used.
 Basic usage:
 
 ```ruby
 # config.rb
 configure :build do
+  set :build_dir, 'some-path/' #optional
+  
   activate :robots, :rules => [
     {:user_agent => '*', :allow => %w(/)}
   ],
