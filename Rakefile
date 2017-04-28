@@ -4,5 +4,6 @@ task default: :test
 
 desc 'test command'
 task :test do
-  sh 'cucumber features/'
+  sh 'bundle exec ruby tests/*'
+  sh 'bundle exec cucumber features/'
 end
