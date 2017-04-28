@@ -60,12 +60,12 @@ class Test_Group < MiniTest::Test
     }
     group = Middleman::Robots::Group.new(rule)
 
-    expected = <<~END
-      User-Agent: GoogleBot
-      Disallow: /tmp/*
-      Disallow: /someting/dir/disallow.html
-      Allow: /allow/*
-      Allow: /someting/dir/allow.html
+    expected = <<-END
+User-Agent: GoogleBot
+Disallow: /tmp/*
+Disallow: /someting/dir/disallow.html
+Allow: /allow/*
+Allow: /someting/dir/allow.html
     END
 
     assert_equal expected, group.text
@@ -78,10 +78,10 @@ class Test_Group < MiniTest::Test
     }
     group = Middleman::Robots::Group.new(rule)
 
-    expected = <<~END
-      User-Agent: *
-      Disallow: /tmp/*
-      Allow: /allow/*
+    expected = <<-END
+User-Agent: *
+Disallow: /tmp/*
+Allow: /allow/*
     END
 
     assert_equal expected, group.text
@@ -94,10 +94,10 @@ class Test_Group < MiniTest::Test
     }
     group = Middleman::Robots::Group.new(rule)
 
-    expected = <<~END
-      User-Agent: GoogleBot
-      Allow: /allow/*
-      Allow: /someting/dir/allow.html
+    expected = <<-END
+User-Agent: GoogleBot
+Allow: /allow/*
+Allow: /someting/dir/allow.html
     END
 
     assert_equal expected, group.text
@@ -110,10 +110,10 @@ class Test_Group < MiniTest::Test
     }
     group = Middleman::Robots::Group.new(rule)
 
-    expected = <<~END
-      User-Agent: GoogleBot
-      Disallow: /tmp/*
-      Disallow: /someting/dir/disallow.html
+    expected = <<-END
+User-Agent: GoogleBot
+Disallow: /tmp/*
+Disallow: /someting/dir/disallow.html
     END
 
     assert_equal expected, group.text
