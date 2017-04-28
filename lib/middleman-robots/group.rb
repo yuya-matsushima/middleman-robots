@@ -1,5 +1,8 @@
 module Middleman
   module Robots
+    # Robots Group Class
+    #
+    # Group class generate block in robots.txt
     class Group
       attr_reader :user_agent, :disallow, :allow
 
