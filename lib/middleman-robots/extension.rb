@@ -1,4 +1,4 @@
-require 'middleman-robots/group'
+require 'middleman-robots/generator'
 
 module Middleman
   module Robots
@@ -12,40 +12,20 @@ module Middleman
       end
 
       def manipulate_resource_list(resources)
-        target = File.join(File.expand_path(File.join('..', 'templates'), __FILE__), 'robots.txt.erb')
-        robots = Middleman::Sitemap::Resource.new(app.sitemap, 'robots.txt', target)
-        robots.add_metadata({locals: {robots: data(options.rules, options.sitemap)}})
+        data   = Generator.new(options.rules, options.sitemap).process
+        robots = Middleman::Sitemap::Resource.new(
+          app.sitemap,
+          'robots.txt',
+          File.join(template_dir, 'robots.txt.erb')
+        )
+        robots.add_metadata(locals: {robots: data})
 
         logger.info '== middleman-robots: robots.txt added to resources =='
         resources << robots
       end
 
-      def data(rules, sitemap_uri)
-        blocks  = block_text(rules)
-        sitemap = sitemap_text(sitemap_uri)
-
-        if !blocks.empty? && !sitemap.empty?
-          blocks + "\n" + sitemap
-        elsif !blocks.empty?
-          blocks
-        elsif !sitemap.empty?
-          sitemap
-        else
-          ''
-        end
-      end
-
-      def block_text(rules)
-        return '' if rules.empty?
-        data = []
-        rules.each do |rule|
-          data << Group.new(rule).text
-        end
-        data.join("\n")
-      end
-
-      def sitemap_text(path)
-        path ? "Sitemap: #{path}" : ''
+      def template_dir
+        File.expand_path(File.join('..', 'templates'), __FILE__)
       end
     end
   end
