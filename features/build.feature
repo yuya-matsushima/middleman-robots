@@ -1,4 +1,4 @@
-Feature: Middleman-Robots
+Feature: Middleman-Robots on build
 
   Scenario: Empty Usage
     Given a fixture app "basic-app"
