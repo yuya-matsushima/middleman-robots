@@ -3,7 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/middleman-robots.svg)](http://badge.fury.io/rb/middleman-robots)
 [![Build Status](https://travis-ci.org/yterajima/middleman-robots.svg?branch=master)](https://travis-ci.org/yterajima/middleman-robots)
 
-`middleman-robots` は [Middleman](http://middlemanapp.com/) の拡張機能です。 build 実行時に `config.rb` に記述されたルールに基いて `robots.txt` を作ります。
+`middleman-robots` は [Middleman](http://middlemanapp.com/) の拡張機能です。 `config.rb` に記述されたルールに基いて `robots.txt` を作ります。
 
 ## Installation
 
@@ -27,12 +27,11 @@ Gemfile を使わずにインストールする場合は次のコマンドを実
 
 ```ruby
 # config.rb
-configure :build do
-  activate :robots, :rules => [
+activate :robots, 
+  :rules => [
     {:user_agent => '*', :allow => %w(/)}
   ],
   :sitemap => "http://example.com/sitemap.xml"
-end
 ```
 
 作成される `robots.txt`:
@@ -50,22 +49,20 @@ Sitemap: http://example.com/sitemap.xml
 
 ```ruby
 # config.rb
-configure :build do
-  activate :robots,
-    :rules => [
-      {
-        :user_agent => 'Googlebot',
-        :disallow =>  %w(tmp/ /something/dir/file_disallow.html),
-        :allow =>  %w(allow/ /something/dir/file_allow.html)
-      },
-      {
-        :user_agent => 'Googlebot-Image',
-        :disallow =>  %w(tmp/ /something/dir/file_disallow.html),
-        :allow =>  %w(allow/ /something/dir/file_allow.html)
-      }
-    ],
-    :sitemap => "http://example.com/sitemap.xml"
-end
+activate :robots,
+  :rules => [
+    {
+      :user_agent => 'Googlebot',
+      :disallow =>  %w(tmp/ /something/dir/file_disallow.html),
+      :allow =>  %w(allow/ /something/dir/file_allow.html)
+    },
+    {
+      :user_agent => 'Googlebot-Image',
+      :disallow =>  %w(tmp/ /something/dir/file_disallow.html),
+      :allow =>  %w(allow/ /something/dir/file_allow.html)
+    }
+  ],
+  :sitemap => "http://example.com/sitemap.xml"
 ```
 
 作成される `robots.txt`:

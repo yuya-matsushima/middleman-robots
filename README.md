@@ -3,7 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/middleman-robots.svg)](http://badge.fury.io/rb/middleman-robots)
 [![Build Status](https://travis-ci.org/yterajima/middleman-robots.svg?branch=master)](https://travis-ci.org/yterajima/middleman-robots)
 
-`middleman-robots` is an extension of [Middleman](http://middlemanapp.com/). This can create `robots.txt` when build.
+`middleman-robots` is an extension of [Middleman](http://middlemanapp.com/). This can create `robots.txt`.
 
 This plugin support Middleman v3-stable and v4.
 
@@ -23,20 +23,13 @@ Or install it yourself as:
 
     $ gem install middleman-robots
 
-## Usage
-Important - if you set the `:build_dir` variable, make sure you set it before the `middleman-robots` settings code, otherwise default `/build` directory is used.
-Basic usage:
-
 ```ruby
 # config.rb
-configure :build do
-  set :build_dir, 'some-path/' #optional
-  
-  activate :robots, :rules => [
+activate :robots, 
+  :rules => [
     {:user_agent => '*', :allow => %w(/)}
   ],
   :sitemap => "http://example.com/sitemap.xml"
-end
 ```
 
 Created `robots.txt`:
@@ -53,22 +46,20 @@ You can use options, `:rules` {[`:user_agent`(string), `:allow`(array), `:disall
 
 ```ruby
 # config.rb
-configure :build do
-  activate :robots,
-    :rules => [
-      {
-        :user_agent => 'Googlebot',
-        :disallow =>  %w(tmp/ /something/dir/file_disallow.html),
-        :allow =>  %w(allow/ /something/dir/file_allow.html)
-      },
-      {
-        :user_agent => 'Googlebot-Image',
-        :disallow =>  %w(tmp/ /something/dir/file_disallow.html),
-        :allow =>  %w(allow/ /something/dir/file_allow.html)
-      }
-    ],
-    :sitemap => "http://example.com/sitemap.xml"
-end
+activate :robots,
+  :rules => [
+    {
+      :user_agent => 'Googlebot',
+      :disallow =>  %w(tmp/ /something/dir/file_disallow.html),
+      :allow =>  %w(allow/ /something/dir/file_allow.html)
+    },
+    {
+      :user_agent => 'Googlebot-Image',
+      :disallow =>  %w(tmp/ /something/dir/file_disallow.html),
+      :allow =>  %w(allow/ /something/dir/file_allow.html)
+    }
+  ],
+  :sitemap => "http://example.com/sitemap.xml"
 ```
 
 Created `robots.txt`:
