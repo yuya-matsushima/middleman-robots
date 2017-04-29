@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Middleman::Robots::VERSION
   spec.authors       = ["Yuya Matsushima"]
   spec.email         = ["terra@e2esound.com"]
-  spec.summary       = %q{Create robots.txt when do 'build'.}
-  spec.description   = %q{Create robots.txt when do 'build'.}
+  spec.summary       = %q{Generate robots.txt by config.rb.}
+  spec.description   = %q{Generate robots.txt by config.rb.}
   spec.homepage      = "https://github.com/yterajima/middleman-robots"
   spec.license       = "MIT"
 
