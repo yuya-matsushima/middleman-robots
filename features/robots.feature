@@ -11,7 +11,7 @@ Feature: Middleman-Robots
     And a successfully built app at "basic-app"
     When I cd to "build"
     Then a file named "robots.txt" should exist
-    And the output should contain "== middleman-robots: robots.txt created =="
+    And the output should contain "== middleman-robots: robots.txt added to resources =="
 
   Scenario: Rules option with user_agent
     Given a fixture app "basic-app"

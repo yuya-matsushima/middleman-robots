@@ -9,15 +9,15 @@ module Middleman
 
       def initialize(app, options_hash = {}, &block)
         super
-        build_dir = app.config.build_dir
-        content = data(options.rules, options.sitemap)
+      end
 
-        app.after_build do
-          File.open(File.join(build_dir, 'robots.txt'), 'w') do |file|
-            file.puts(content)
-          end
-          logger.info '== middleman-robots: robots.txt created =='
-        end
+      def manipulate_resource_list(resources)
+        target = File.join(File.expand_path(File.join('..', 'templates'), __FILE__), 'robots.txt.erb')
+        robots = Middleman::Sitemap::Resource.new(app.sitemap, 'robots.txt', target)
+        robots.add_metadata({locals: {robots: data(options.rules, options.sitemap)}})
+
+        logger.info '== middleman-robots: robots.txt added to resources =='
+        resources << robots
       end
 
       def data(rules, sitemap_uri)
