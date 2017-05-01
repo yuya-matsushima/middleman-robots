@@ -42,7 +42,7 @@ Sitemap: http://example.com/sitemap.xml
 
 ```
 
-You can use options, `:rules` {[`:user_agent`(string), `:allow`(array), `:disallow`(array)]} and `:sitemap`. Like this:
+You can use options, `:rules` [{`:user_agent`(string), `:allow`(array), `:disallow`(array)}] and `:sitemap`. Like this:
 
 ```ruby
 # config.rb

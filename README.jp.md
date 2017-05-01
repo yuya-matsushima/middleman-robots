@@ -45,7 +45,7 @@ Sitemap: http://example.com/sitemap.xml
 ```
 
 
-オプションには `:rules` {[`:user_agent`(string), `:allow`(array), `:disallow`(array)]} と `:sitemap` を指定できます。すべてのオプションを指定すると次のようになります:
+オプションには `:rules` [{`:user_agent`(string), `:allow`(array), `:disallow`(array)}] と `:sitemap` を指定できます。すべてのオプションを指定すると次のようになります:
 
 ```ruby
 # config.rb
