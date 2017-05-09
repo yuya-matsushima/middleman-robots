@@ -8,6 +8,7 @@
 /spec/reports/
 /tmp/*
 !/tmp/robots/
+/tmp/robots/*
 /vendor
 *.bundle
 *.so
