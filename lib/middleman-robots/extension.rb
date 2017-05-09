@@ -23,6 +23,15 @@ module Middleman
         logger.info '== middleman-robots: robots.txt added to resources =='
         resources << robots
       end
+
+      def manipulate_resource_list(resources)
+        resources << Middleman::Sitemap::Resource.new(app.sitemap, 'robots.txt', source)
+      end
+
+      def source
+        templates_dir = File.expand_path(File.join('..', 'templates'), __FILE__)
+        File.join(templates_dir, 'robots.txt')
+      end
     end
   end
 end
