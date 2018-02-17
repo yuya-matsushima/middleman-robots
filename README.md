@@ -3,7 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/middleman-robots.svg)](http://badge.fury.io/rb/middleman-robots)
 [![Build Status](https://travis-ci.org/yterajima/middleman-robots.svg?branch=master)](https://travis-ci.org/yterajima/middleman-robots)
 
-`middleman-robots` is an extension of [Middleman](http://middlemanapp.com/). This can create `robots.txt`.
+`middleman-robots` is an extension of [Middleman](https://middlemanapp.com/). This can create `robots.txt`.
 
 This plugin support Middleman v3-stable and v4.
 
@@ -26,10 +26,10 @@ Or install it yourself as:
 ```ruby
 # config.rb
 activate :robots, 
-  :rules => [
-    {:user_agent => '*', :allow => %w(/)}
+  rules: [
+    { user_agent: '*', allow: %w[/] }
   ],
-  :sitemap => "http://example.com/sitemap.xml"
+  sitemap: 'https://example.com/sitemap.xml'
 ```
 
 Created `robots.txt`:
@@ -38,28 +38,28 @@ Created `robots.txt`:
 User-Agent: *
 Allow: /
 
-Sitemap: http://example.com/sitemap.xml
+Sitemap: https://example.com/sitemap.xml
 
 ```
 
-You can use options, `:rules` [{`:user_agent`(string), `:allow`(array), `:disallow`(array)}] and `:sitemap`. Like this:
+You can use options, `rules` [ {`user_agent`(string), `allow`(array), `disallow`(array)}] and `sitemap`. Like this:
 
 ```ruby
 # config.rb
 activate :robots,
-  :rules => [
+  rules: [
     {
-      :user_agent => 'Googlebot',
-      :disallow =>  %w(tmp/ /something/dir/file_disallow.html),
-      :allow =>  %w(allow/ /something/dir/file_allow.html)
+      user_agent: 'Googlebot',
+      disallow: %w[tmp/ /something/dir/file_disallow.html],
+      allow: %w[allow/ /something/dir/file_allow.html]
     },
     {
-      :user_agent => 'Googlebot-Image',
-      :disallow =>  %w(tmp/ /something/dir/file_disallow.html),
-      :allow =>  %w(allow/ /something/dir/file_allow.html)
+      user_agent: 'Googlebot-Image',
+      disallow: %w[tmp/ /something/dir/file_disallow.html],
+      allow: %w[allow/ /something/dir/file_allow.html]
     }
   ],
-  :sitemap => "http://example.com/sitemap.xml"
+  sitemap: 'https://example.com/sitemap.xml'
 ```
 
 Created `robots.txt`:
@@ -77,7 +77,7 @@ Disallow: /something/dir/file_disallow.html
 Allow: /allow/
 Allow: /something/dir/file_allow.html
 
-Sitemap: http://example.com/sitemap.xml
+Sitemap: https://example.com/sitemap.xml
 
 ```
 
