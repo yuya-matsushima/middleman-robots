@@ -1,4 +1,3 @@
-# coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'middleman-robots/version'
@@ -8,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.version       = Middleman::Robots::VERSION
   spec.authors       = ['Yuya Matsushima']
   spec.email         = ['terra@e2esound.com']
-  spec.summary       = %q{Generate robots.txt by config.rb.}
-  spec.description   = %q{Generate robots.txt by config.rb.}
+  spec.summary       = 'Generate robots.txt by config.rb.'
+  spec.description   = 'middleman-robots create robots.txt includes Allow or Disallow and sitemap path.'
   spec.homepage      = 'https://github.com/yterajima/middleman-robots'
   spec.license       = 'MIT'
 
@@ -21,10 +20,10 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency 'middleman', '>= 4.0'
 
-  spec.add_development_dependency 'cucumber', '>= 3.1.0'
-  spec.add_development_dependency 'capybara', '>= 2.18.0'
   spec.add_development_dependency 'aruba', '>= 0.14.3'
   spec.add_development_dependency 'bundler', '>= 1.16'
+  spec.add_development_dependency 'capybara', '>= 2.18.0'
+  spec.add_development_dependency 'cucumber', '>= 3.1.0'
   spec.add_development_dependency 'rake', '>= 12.3'
+  spec.add_development_dependency 'rubocop', '>= 0.52.1'
 end
-

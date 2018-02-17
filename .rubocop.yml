@@ -1,0 +1,38 @@
+AllCops:
+  Exclude:
+    - 'pkg/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+  TargetRubyVersion: 2.5
+  DisplayCopNames: true
+
+Rails:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/RedundantSelf:
+  Enabled: false
+
+Gemspec/RequiredRubyVersion:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - '*.gemspec'
+
+Metrics/MethodLength:
+  Max: 20
+
+Naming/FileName:
+  Enabled: true
+  Exclude:
+    - 'lib/middleman-robots.rb'

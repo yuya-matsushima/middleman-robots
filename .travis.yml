@@ -14,7 +14,9 @@ matrix:
   fast_finish: true
   allow_failures:
     - rvm: jruby-head
-script: bundle exec rake test
+script:
+  - bundle exec rake test
+  - bundle exec rubocop
 cache: bundler
 env: TEST=true
 notifications:

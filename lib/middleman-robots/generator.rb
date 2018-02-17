@@ -25,18 +25,19 @@ module Middleman
       end
 
       private
-        def block_text
-          return '' if @rules.empty?
-          data = []
-          @rules.each do |rule|
-            data << Group.new(rule).text
-          end
-          data.join("\n")
-        end
 
-        def sitemap_text
-          @sitemap_uri ? "Sitemap: #{@sitemap_uri}" : ''
+      def block_text
+        return '' if @rules.empty?
+        data = []
+        @rules.each do |rule|
+          data << Group.new(rule).text
         end
+        data.join("\n")
+      end
+
+      def sitemap_text
+        @sitemap_uri ? "Sitemap: #{@sitemap_uri}" : ''
+      end
     end
   end
 end

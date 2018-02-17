@@ -1,18 +1,18 @@
 require 'minitest/autorun'
 require_relative '../lib/middleman-robots/generator.rb'
 
-class Test_Generator < MiniTest::Test
+class TestGenerator < MiniTest::Test
   def test_process
     rules = [
       {
         user_agent: 'Googlebot',
-        disallow:  %w(tmp/* /something/dir/file_disallow.html),
-        allow:  %w(allow/* /something/dir/file_allow.html)
+        disallow:  %w[tmp/* /something/dir/file_disallow.html],
+        allow:  %w[allow/* /something/dir/file_allow.html]
       },
       {
         user_agent: 'Googlebot-Image',
-        disallow:  %w(tmp/* /something/dir/file_disallow.html),
-        allow:  %w(allow/* /something/dir/file_allow.html)
+        disallow:  %w[tmp/* /something/dir/file_disallow.html],
+        allow:  %w[allow/* /something/dir/file_allow.html]
       }
     ]
     sitemap_uri = 'http://example.com/sitemap.xml'
