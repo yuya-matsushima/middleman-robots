@@ -9,11 +9,7 @@ module Middleman
       option :sitemap, false, 'URI of sitemap.xml'
 
       def manipulate_resource_list(resources)
-        tmp_path = File.expand_path('../../../tmp/robots/robots.txt', __FILE__)
-        File.open(tmp_path, 'w+') do |f|
-          f.puts(Generator.new(options.rules, options.sitemap).process)
-        end
-
+        write_robots(options)
         robots = Middleman::Sitemap::Resource.new(
           app.sitemap,
           'robots.txt',
@@ -22,6 +18,16 @@ module Middleman
 
         logger.info '== middleman-robots: robots.txt added to resources =='
         resources << robots
+      end
+
+      def write_robots(options)
+        File.open(tmp_path, 'w+') do |f|
+          f.puts(Generator.new(options.rules, options.sitemap).process)
+        end
+      end
+
+      def tmp_path
+        File.expand_path('../../../tmp/robots/robots.txt', __FILE__)
       end
     end
   end
