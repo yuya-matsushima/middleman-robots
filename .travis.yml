@@ -13,7 +13,7 @@ os:
 matrix:
   fast_finish: true
   allow_failures:
-    - rvm: jruby-head
+    - rvm: ruby-head
 script:
   - bundle exec rake test
   - bundle exec rubocop
