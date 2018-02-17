@@ -1,24 +1,32 @@
 require 'minitest/autorun'
 require_relative '../lib/middleman-robots/generator.rb'
 
-class Test_Generator < MiniTest::Test
+class TestGenerator < MiniTest::Test
   def test_process
-    rules = [
+    sitemap_uri = 'http://example.com/sitemap.xml'
+    generator = Middleman::Robots::Generator.new(rules, sitemap_uri)
+    assert_equal expected, generator.process
+  end
+
+  private
+
+  def rules
+    [
       {
         user_agent: 'Googlebot',
-        disallow:  %w(tmp/* /something/dir/file_disallow.html),
-        allow:  %w(allow/* /something/dir/file_allow.html)
+        disallow:  %w[tmp/* /something/dir/file_disallow.html],
+        allow:  %w[allow/* /something/dir/file_allow.html]
       },
       {
         user_agent: 'Googlebot-Image',
-        disallow:  %w(tmp/* /something/dir/file_disallow.html),
-        allow:  %w(allow/* /something/dir/file_allow.html)
+        disallow:  %w[tmp/* /something/dir/file_disallow.html],
+        allow:  %w[allow/* /something/dir/file_allow.html]
       }
     ]
-    sitemap_uri = 'http://example.com/sitemap.xml'
-    generator = Middleman::Robots::Generator.new(rules, sitemap_uri)
+  end
 
-    expected = "User-Agent: Googlebot
+  def expected
+    "User-Agent: Googlebot
 Disallow: /tmp/*
 Disallow: /something/dir/file_disallow.html
 Allow: /allow/*
@@ -31,7 +39,5 @@ Allow: /allow/*
 Allow: /something/dir/file_allow.html
 
 Sitemap: http://example.com/sitemap.xml"
-
-    assert_equal expected, generator.process
   end
 end
