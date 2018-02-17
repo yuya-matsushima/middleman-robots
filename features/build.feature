@@ -18,9 +18,7 @@ Feature: Middleman-Robots on build
     Given a fixture app "basic-app"
     And a file named "config.rb" with:
       """
-      activate :robots, :rules => [
-        {:user_agent => '*'}
-      ]
+      activate :robots, rules: [ { user_agent: '*'} ]
       """
     And a successfully built app at "basic-app"
     When I cd to "build"
@@ -34,9 +32,7 @@ Feature: Middleman-Robots on build
     And a file named "config.rb" with:
       """
       activate :robots do |r|
-        r.rules = [
-          {:user_agent => '*'}
-        ]
+        r.rules = [ { user_agent: '*'} ]
       end
       """
     And a successfully built app at "basic-app"
@@ -50,9 +46,7 @@ Feature: Middleman-Robots on build
     Given a fixture app "basic-app"
     And a file named "config.rb" with:
       """
-      activate :robots, :rules => [
-        {:user_agent => '*'}
-      ]
+      activate :robots, rules: [ { user_agent: '*'} ]
       """
     And a successfully built app at "basic-app"
     When I cd to "build"
@@ -65,9 +59,7 @@ Feature: Middleman-Robots on build
     Given a fixture app "basic-app"
     And a file named "config.rb" with:
       """
-      activate :robots, :rules => [
-        {'user-agent' => '*'}
-      ]
+      activate :robots, rules: [ { 'user-agent': '*' } ]
       """
     And a successfully built app at "basic-app"
     When I cd to "build"
@@ -80,10 +72,10 @@ Feature: Middleman-Robots on build
     Given a fixture app "basic-app"
     And a file named "config.rb" with:
       """
-      activate :robots, :rules => [
+      activate :robots, rules: [
         {
-          :user_agent => '*',
-          :disallow =>  %w(tmp/* /something/dir/file_disallow.html)
+          user_agent: '*',
+          disallow:  %w[tmp/* /something/dir/file_disallow.html]
         }
       ]
       """
@@ -100,10 +92,10 @@ Feature: Middleman-Robots on build
     Given a fixture app "basic-app"
     And a file named "config.rb" with:
       """
-      activate :robots, :rules => [
+      activate :robots, rules: [
         {
-          :user_agent => '*',
-          :allow =>  %w(allow/* /something/dir/file_allow.html)
+          user_agent: '*',
+          allow: %w[allow/* /something/dir/file_allow.html]
         }
       ]
       """
@@ -120,11 +112,11 @@ Feature: Middleman-Robots on build
     Given a fixture app "basic-app"
     And a file named "config.rb" with:
       """
-      activate :robots, :rules => [
+      activate :robots, rules: [
         {
-          :user_agent => '*',
-          :disallow =>  %w(tmp/* /something/dir/file_disallow.html),
-          :allow =>  %w(allow/* /something/dir/file_allow.html)
+          user_agent: '*',
+          disallow: %w[tmp/* /something/dir/file_disallow.html],
+          allow: %w[allow/* /something/dir/file_allow.html]
         }
       ]
       """
@@ -143,16 +135,16 @@ Feature: Middleman-Robots on build
     Given a fixture app "basic-app"
     And a file named "config.rb" with:
       """
-      activate :robots, :rules => [
+      activate :robots, rules: [
         {
-          :user_agent => 'Googlebot',
-          :disallow =>  %w(tmp/* /something/dir/file_disallow.html),
-          :allow =>  %w(allow/* /something/dir/file_allow.html)
+          user_agent: 'Googlebot',
+          disallow: %w[tmp/* /something/dir/file_disallow.html],
+          allow: %w[allow/* /something/dir/file_allow.html]
         },
         {
-          :user_agent => 'Googlebot-Image',
-          :disallow =>  %w(tmp/* /something/dir/file_disallow.html),
-          :allow =>  %w(allow/* /something/dir/file_allow.html)
+          user_agent: 'Googlebot-Image',
+          disallow: %w[tmp/* /something/dir/file_disallow.html],
+          allow: %w[allow/* /something/dir/file_allow.html]
         }
       ]
       """
@@ -177,7 +169,7 @@ Feature: Middleman-Robots on build
     Given a fixture app "basic-app"
     And a file named "config.rb" with:
       """
-      activate :robots, :sitemap => "http://example.com/sitemap.xml"
+      activate :robots, sitemap: 'http://example.com/sitemap.xml'
       """
     And a successfully built app at "basic-app"
     When I cd to "build"
@@ -191,19 +183,19 @@ Feature: Middleman-Robots on build
     And a file named "config.rb" with:
       """
       activate :robots,
-        :rules => [
+        rules: [
           {
-            :user_agent => 'Googlebot',
-            :disallow =>  %w(tmp/* /something/dir/file_disallow.html),
-            :allow =>  %w(allow/* /something/dir/file_allow.html)
+            user_agent:'Googlebot',
+            disallow: %w[tmp/* /something/dir/file_disallow.html],
+            allow: %w[allow/* /something/dir/file_allow.html]
           },
           {
-            :user_agent => 'Googlebot-Image',
-            :disallow =>  %w(tmp/* /something/dir/file_disallow.html),
-            :allow =>  %w(allow/* /something/dir/file_allow.html)
+            user_agent:'Googlebot-Image',
+            disallow: %w[tmp/* /something/dir/file_disallow.html],
+            allow: %w[allow/* /something/dir/file_allow.html]
           }
         ],
-        :sitemap => "http://example.com/sitemap.xml"
+        sitemap: 'http://example.com/sitemap.xml'
       """
     And a successfully built app at "basic-app"
     When I cd to "build"
