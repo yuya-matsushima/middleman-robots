@@ -27,7 +27,7 @@ module Middleman
       end
 
       def tmp_path
-        File.expand_path('../../../tmp/robots/robots.txt', __FILE__)
+        File.expand_path('../../tmp/robots/robots.txt', __dir__)
       end
     end
   end
