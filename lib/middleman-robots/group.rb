@@ -24,6 +24,7 @@ module Middleman
 
       def generate_user_agent(rule)
         return '*' unless rule.key?('user-agent') || rule.key?(:user_agent)
+
         rule[:user_agent] || rule['user-agent']
       end
 
