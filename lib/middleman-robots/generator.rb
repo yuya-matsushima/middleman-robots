@@ -28,6 +28,7 @@ module Middleman
 
       def block_text
         return '' if @rules.empty?
+
         data = []
         @rules.each do |rule|
           data << Group.new(rule).text
