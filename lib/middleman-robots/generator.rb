@@ -13,7 +13,7 @@ module Middleman
         blocks  = block_text
         sitemap = sitemap_text
 
-        if !blocks.empty? && !sitemap.empty?
+        txt = if !blocks.empty? && !sitemap.empty?
           blocks + "\n" + sitemap
         elsif !blocks.empty?
           blocks
@@ -22,6 +22,7 @@ module Middleman
         else
           ''
         end
+        txt + "\n"
       end
 
       private
