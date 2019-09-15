@@ -5,21 +5,17 @@ before_script:
   - bundle update
 rvm:
   - ruby-head
-  - 2.6.0
-  - 2.5.3
-  - 2.4.5
-  - 2.3.8
+  - 2.6.4
+  - 2.5.6
+  - 2.4.7
 os:
-- linux
+  - linux
 matrix:
   fast_finish: true
   allow_failures:
     - rvm: ruby-head
 script:
-  - bundle exec rake test
   - bundle exec rubocop
+  - bundle exec rake test
 cache: bundler
 env: TEST=true
-notifications:
-  slack:
-    secure: C8xb94J4fstzAI7t9GcvKQieKc1k+ECA96ydcxDwBI1fAbupQjz4jafMwnOnD1g9QMe8hlykSNUlCXNCbcA9DZG7COjPZHCY3Icv1+0Dp44bBTDQldR8DPACPMU5Qe+pWoTZViPgJQ7tq2V9TXrGdOnOtkPTwZ9KtZrmNhxW7tM=
