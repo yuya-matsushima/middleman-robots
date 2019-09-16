@@ -3,11 +3,8 @@ AllCops:
     - 'pkg/*'
     - 'tmp/**/*'
     - 'vendor/**/*'
-  TargetRubyVersion: 2.5
+  TargetRubyVersion: 2.6
   DisplayCopNames: true
-
-Rails:
-  Enabled: false
 
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -23,6 +20,10 @@ Style/RedundantSelf:
 
 Gemspec/RequiredRubyVersion:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*_spec.rb'
 
 Metrics/LineLength:
   Max: 120
