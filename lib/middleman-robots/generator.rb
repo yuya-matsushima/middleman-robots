@@ -14,14 +14,14 @@ module Middleman
         sitemap = sitemap_text
 
         txt = if !blocks.empty? && !sitemap.empty?
-          blocks + "\n" + sitemap
-        elsif !blocks.empty?
-          blocks
-        elsif !sitemap.empty?
-          sitemap
-        else
-          ''
-        end
+                blocks + "\n" + sitemap
+              elsif !blocks.empty?
+                blocks
+              elsif !sitemap.empty?
+                sitemap
+              else
+                ''
+              end
         txt + "\n"
       end
 

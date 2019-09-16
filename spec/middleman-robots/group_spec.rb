@@ -15,8 +15,8 @@ RSpec.describe Middleman::Robots::Group do
 
     context 'with all options' do
       it { expect(subject.user_agent).to eq rules[:user_agent] }
-      it { expect(subject.disallow).to eq rules[:disallow].map { |path| File.join('/', path) } }
-      it { expect(subject.allow).to eq rules[:allow].map { |path| File.join('/', path)} }
+      it { expect(subject.disallow).to eq(rules[:disallow].map { |path| File.join('/', path) }) }
+      it { expect(subject.allow).to eq(rules[:allow].map { |path| File.join('/', path) }) }
     end
 
     context 'with allow and disallow' do
@@ -67,13 +67,13 @@ RSpec.describe Middleman::Robots::Group do
 
     context 'with all options' do
       let(:expected) do
-        <<~EOS
+        <<~ROBOTS
           User-Agent: GoogleBot
           Disallow: /tmp/*
           Disallow: /someting/dir/disallow.html
           Allow: /allow/*
           Allow: /someting/dir/allow.html
-        EOS
+        ROBOTS
       end
 
       it { is_expected.to eq expected }
@@ -87,11 +87,11 @@ RSpec.describe Middleman::Robots::Group do
         }
       end
       let(:expected) do
-        <<~EOS
+        <<~ROBOTS
           User-Agent: *
           Disallow: /tmp/*
           Allow: /allow/*
-        EOS
+        ROBOTS
       end
 
       it { is_expected.to eq expected }
@@ -105,11 +105,11 @@ RSpec.describe Middleman::Robots::Group do
         }
       end
       let(:expected) do
-        <<~EOS
+        <<~ROBOTS
           User-Agent: GoogleBot
           Allow: /allow/*
           Allow: /someting/dir/allow.html
-        EOS
+        ROBOTS
       end
 
       it { is_expected.to eq expected }
@@ -123,11 +123,11 @@ RSpec.describe Middleman::Robots::Group do
         }
       end
       let(:expected) do
-        <<~EOS
+        <<~ROBOTS
           User-Agent: GoogleBot
           Disallow: /tmp/*
           Disallow: /someting/dir/disallow.html
-        EOS
+        ROBOTS
       end
 
       it { is_expected.to eq expected }

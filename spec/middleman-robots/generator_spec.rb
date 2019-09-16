@@ -35,7 +35,7 @@ RSpec.describe Middleman::Robots::Generator do
     end
     let(:sitemap_url) { 'http://example.com/sitemap.xml' }
     let(:expected) do
-      <<~EOS
+      <<~ROBOTS
         User-Agent: Googlebot
         Disallow: /tmp/*
         Disallow: /something/dir/file_disallow.html
@@ -49,7 +49,7 @@ RSpec.describe Middleman::Robots::Generator do
         Allow: /something/dir/file_allow.html
 
         Sitemap: http://example.com/sitemap.xml
-      EOS
+      ROBOTS
     end
 
     subject do
