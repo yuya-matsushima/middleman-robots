@@ -1,4 +1,3 @@
-require 'spec_helper'
 require_relative '../../lib/middleman-robots/generator.rb'
 
 RSpec.describe Middleman::Robots::Generator do
