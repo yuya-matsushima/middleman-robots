@@ -10,19 +10,7 @@ module Middleman
       end
 
       def process
-        blocks  = block_text
-        sitemap = sitemap_text
-
-        txt = if !blocks.empty? && !sitemap.empty?
-                blocks + "\n" + sitemap
-              elsif !blocks.empty?
-                blocks
-              elsif !sitemap.empty?
-                sitemap
-              else
-                ''
-              end
-        txt + "\n"
+        [block_text, sitemap_text].join("\n") + "\n"
       end
 
       private
@@ -30,11 +18,7 @@ module Middleman
       def block_text
         return '' if @rules.empty?
 
-        data = []
-        @rules.each do |rule|
-          data << Group.new(rule).text
-        end
-        data.join("\n")
+        @rules.map { |rule| Group.new(rule).text }.join("\n")
       end
 
       def sitemap_text

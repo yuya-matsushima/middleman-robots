@@ -29,23 +29,15 @@ module Middleman
       end
 
       def generate_disallow(rule)
-        paths = []
-        return paths unless rule.key?(:disallow)
+        return [] unless rule.key?(:disallow)
 
-        rule[:disallow].each do |path|
-          paths << File.join('/', path)
-        end
-        paths
+        rule[:disallow].map { |path| File.join('/', path) }
       end
 
       def generate_allow(rule)
-        paths = []
-        return paths unless rule.key?(:allow)
+        return [] unless rule.key?(:allow)
 
-        rule[:allow].each do |path|
-          paths << File.join('/', path)
-        end
-        paths
+        rule[:allow].map { |path| File.join('/', path) }
       end
     end
   end
