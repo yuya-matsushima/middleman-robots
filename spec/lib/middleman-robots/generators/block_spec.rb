@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'middleman-robots/generators/block'
 
 RSpec.describe Middleman::Robots::Generators::Block do
@@ -13,7 +15,7 @@ RSpec.describe Middleman::Robots::Generators::Block do
         }
       end
       let(:expected) do
-        expected =<<~ROBOTS
+        expected = <<~ROBOTS
           User-Agent: GoogleBot
           Disallow: /tmp/*
           Disallow: /someting/dir/disallow.html
@@ -78,7 +80,7 @@ RSpec.describe Middleman::Robots::Generators::Block do
       context 'single Array' do
         let(:rule) { { disallow: %w[/tmp/*] } }
         let(:expected) do
-          expected =<<~ROBOTS
+          expected = <<~ROBOTS
             User-Agent: *
             Disallow: /tmp/*
           ROBOTS
@@ -91,7 +93,7 @@ RSpec.describe Middleman::Robots::Generators::Block do
       context 'multiple Array' do
         let(:rule) { { disallow: %w[/tmp/* /something/disallow.html] } }
         let(:expected) do
-          expected =<<~ROBOTS
+          expected = <<~ROBOTS
             User-Agent: *
             Disallow: /tmp/*
             Disallow: /something/disallow.html
@@ -141,7 +143,7 @@ RSpec.describe Middleman::Robots::Generators::Block do
       context 'single Array' do
         let(:rule) { { allow: %w[/tmp/*] } }
         let(:expected) do
-          expected =<<~ROBOTS
+          expected = <<~ROBOTS
             User-Agent: *
             Allow: /tmp/*
           ROBOTS
@@ -154,7 +156,7 @@ RSpec.describe Middleman::Robots::Generators::Block do
       context 'multiple Array' do
         let(:rule) { { allow: %w[/tmp/* /something/allow.html] } }
         let(:expected) do
-          expected =<<~ROBOTS
+          expected = <<~ROBOTS
             User-Agent: *
             Allow: /tmp/*
             Allow: /something/allow.html

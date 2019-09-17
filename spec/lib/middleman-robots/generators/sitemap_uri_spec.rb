@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'middleman-robots/generators/sitemap_uri'
 
 RSpec.describe Middleman::Robots::Generators::SitemapUri do

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'middleman-robots/generators/blocks'
 
 RSpec.describe Middleman::Robots::Generators::Blocks do
@@ -20,7 +22,7 @@ RSpec.describe Middleman::Robots::Generators::Blocks do
         ]
       end
       let(:expected) do
-        expected =<<~ROBOTS
+        expected = <<~ROBOTS
           User-Agent: GoogleBot
           Disallow: /tmp/*
           Disallow: /someting/dir/disallow.html

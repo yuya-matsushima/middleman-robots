@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'middleman-robots/generator'
 
 RSpec.describe Middleman::Robots::Generator do

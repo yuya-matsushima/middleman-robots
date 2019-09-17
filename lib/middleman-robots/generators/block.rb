@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support/core_ext/object/blank'
 
 module Middleman
@@ -17,7 +19,7 @@ module Middleman
           [
             user_agent,
             disallow,
-            allow,
+            allow
           ].compact.join("\n")
         end
 
@@ -25,7 +27,7 @@ module Middleman
 
         def user_agent
           user_agent = rule[:user_agent].presence || rule['user-agent'].presence || '*'
-          unless user_agent.is_a? String || user_agent.nil?
+          if !user_agent.is_a?(String) && !user_agent.nil?
             raise ArgumentError, '`user_agent` or `user-agent` option must be String or nil'
           end
 
@@ -33,7 +35,7 @@ module Middleman
         end
 
         def disallow
-          return nil if !rule.key?(:disallow) || rule[:disallow].nil?
+          return nil if rule[:disallow].nil?
           unless rule[:disallow].is_a? Array
             raise ArgumentError, '`disallow` option must be Array or nil'
           end
@@ -42,10 +44,8 @@ module Middleman
         end
 
         def allow
-          return nil if !rule.key?(:allow) || rule[:allow].nil?
-          unless rule[:allow].is_a? Array
-            raise ArgumentError, '`allow` option must be Array or nil'
-          end
+          return nil if rule[:allow].nil?
+          raise ArgumentError, '`allow` option must be Array or nil' unless rule[:allow].is_a? Array
 
           rule[:allow].map { |path| "Allow: #{File.join('/', path)}" }
         end

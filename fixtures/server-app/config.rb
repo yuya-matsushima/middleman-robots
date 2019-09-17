@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 rules = [
   {
     user_agent: 'Googlebot',
