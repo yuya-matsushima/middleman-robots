@@ -1,44 +1,27 @@
-require 'middleman-robots/group'
+# frozen_string_literal: true
+
+require 'middleman-robots/generators/blocks'
+require 'middleman-robots/generators/sitemap_uri'
 
 module Middleman
   module Robots
     # Robots Text Generator Class
     class Generator
+      attr_accessor :rules, :sitemap_uri
+
       def initialize(rules, sitemap_uri)
         @rules = rules
         @sitemap_uri = sitemap_uri
       end
 
       def process
-        blocks  = block_text
-        sitemap = sitemap_text
+        text = [
+          Generators::Blocks.new(rules).text,
+          Generators::SitemapUri.new(sitemap_uri).text
+        ].compact.join "\n\n"
 
-        txt = if !blocks.empty? && !sitemap.empty?
-                blocks + "\n" + sitemap
-              elsif !blocks.empty?
-                blocks
-              elsif !sitemap.empty?
-                sitemap
-              else
-                ''
-              end
-        txt + "\n"
-      end
-
-      private
-
-      def block_text
-        return '' if @rules.empty?
-
-        data = []
-        @rules.each do |rule|
-          data << Group.new(rule).text
-        end
-        data.join("\n")
-      end
-
-      def sitemap_text
-        @sitemap_uri ? "Sitemap: #{@sitemap_uri}" : ''
+        text += "\n" if text.present?
+        text
       end
     end
   end

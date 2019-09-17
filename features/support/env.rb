@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 PROJECT_ROOT_PATH = File.expand_path('../../', __dir__)
 require 'middleman-core'
 require 'middleman-core/step_definitions'
