@@ -1,3 +1,5 @@
+require 'active_support/core_ext/object/blank'
+
 module Middleman
   module Robots
     module Generators
@@ -22,18 +24,28 @@ module Middleman
         private
 
         def user_agent
-          user_agent = rule[:user_agent] || rule['user-agent']  || '*'
+          user_agent = rule[:user_agent].presence || rule['user-agent'].presence || '*'
+          unless user_agent.is_a? String || user_agent.nil?
+            raise ArgumentError.new('`user_agent` or `user-agent` option must be String')
+          end
+
           "User-Agent: #{user_agent}"
         end
 
         def disallow
-          return nil unless rule.key? :disallow
+          return nil if !rule.key?(:disallow) || rule[:disallow].blank?
+          unless rule[:disallow].is_a? Array
+            raise ArgumentError.new('`disallow` option must be Array')
+          end
 
           rule[:disallow].map { |path| "Disallow: #{File.join('/', path)}" }
         end
 
         def allow
-          return nil unless rule.key? :allow
+          return nil if !rule.key?(:allow) || rule[:allow].blank?
+          unless rule[:allow].is_a? Array
+            raise ArgumentError.new('`allow` option must be Array')
+          end
 
           rule[:allow].map { |path| "Allow: #{File.join('/', path)}" }
         end
