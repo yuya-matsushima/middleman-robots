@@ -108,14 +108,14 @@ RSpec.describe Middleman::Robots::Generators::Block do
         it { is_expected.to eq 'User-Agent: *' }
       end
 
-      context 'empty' do
-        let(:rule) { { disallow: '' } }
-
-        it { is_expected.to eq 'User-Agent: *' }
-      end
-
       context 'ERROR when' do
         subject { -> { described_class.new(rule).text } }
+
+        context 'empty' do
+          let(:rule) { { disallow: '' } }
+
+          it { is_expected.to raise_error ArgumentError }
+        end
 
         context 'String' do
           let(:rule) { { disallow: 'string' } }
@@ -171,14 +171,14 @@ RSpec.describe Middleman::Robots::Generators::Block do
         it { is_expected.to eq 'User-Agent: *' }
       end
 
-      context 'empty' do
-        let(:rule) { { allow: '' } }
-
-        it { is_expected.to eq 'User-Agent: *' }
-      end
-
       context 'ERROR when' do
         subject { -> { described_class.new(rule).text } }
+
+        context 'empty' do
+          let(:rule) { { allow: '' } }
+
+          it { is_expected.to raise_error ArgumentError }
+        end
 
         context 'String' do
           let(:rule) { { allow: 'string' } }

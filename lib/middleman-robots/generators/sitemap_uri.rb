@@ -1,3 +1,5 @@
+require 'active_support/core_ext/object/blank'
+
 module Middleman
   module Robots
     module Generators
@@ -9,7 +11,10 @@ module Middleman
         end
 
         def text
-          return nil if uri.nil?
+          return nil if uri.blank?
+          unless uri.is_a? String
+            raise ArgumentError, 'sitemap_uri must be string or nil'
+          end
 
           "Sitemap: #{uri}"
         end

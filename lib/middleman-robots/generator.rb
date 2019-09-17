@@ -18,7 +18,8 @@ module Middleman
           Generators::SitemapUri.new(sitemap_uri).text
         ].compact.join "\n\n"
 
-        text + "\n" unless text.nil?
+        text += "\n" if text.present?
+        text
       end
     end
   end

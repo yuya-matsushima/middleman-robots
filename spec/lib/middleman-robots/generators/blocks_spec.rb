@@ -42,7 +42,7 @@ RSpec.describe Middleman::Robots::Generators::Blocks do
     context 'without option' do
       let(:rules) { {} }
 
-      it { is_expected.to be_empty }
+      it { is_expected.to be_nil }
     end
   end
 end

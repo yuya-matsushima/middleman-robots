@@ -1,61 +1,63 @@
 require 'middleman-robots/generator'
 
 RSpec.describe Middleman::Robots::Generator do
-  before do
-    @klass = Middleman::Robots::Generator.new(rules, sitemap_url)
-  end
-
   describe '#process' do
-    let(:rules) do
-      [
-        {
-          user_agent: 'Googlebot',
-          disallow: %w[
-            tmp/*
-            /something/dir/file_disallow.html
-          ],
-          allow: %w[
-            allow/*
-            /something/dir/file_allow.html
-          ]
-        },
-        {
-          user_agent: 'Googlebot-Image',
-          disallow: %w[
-            tmp/*
-            /something/dir/file_disallow.html
-          ],
-          allow: %w[
-            allow/*
-            /something/dir/file_allow.html
-          ]
-        }
-      ]
+    subject { Middleman::Robots::Generator.new(rules, sitemap_uri).process }
+
+    context 'with all options' do
+      let(:rules) do
+        [
+          {
+            user_agent: 'Googlebot',
+            disallow: %w[
+              tmp/*
+              /something/dir/file_disallow.html
+            ],
+            allow: %w[
+              allow/*
+              /something/dir/file_allow.html
+            ]
+          },
+          {
+            user_agent: 'Googlebot-Image',
+            disallow: %w[
+              tmp/*
+              /something/dir/file_disallow.html
+            ],
+            allow: %w[
+              allow/*
+              /something/dir/file_allow.html
+            ]
+          }
+        ]
+      end
+      let(:sitemap_uri) { 'http://example.com/sitemap.xml' }
+      let(:expected) do
+        <<~ROBOTS
+          User-Agent: Googlebot
+          Disallow: /tmp/*
+          Disallow: /something/dir/file_disallow.html
+          Allow: /allow/*
+          Allow: /something/dir/file_allow.html
+
+          User-Agent: Googlebot-Image
+          Disallow: /tmp/*
+          Disallow: /something/dir/file_disallow.html
+          Allow: /allow/*
+          Allow: /something/dir/file_allow.html
+
+          Sitemap: http://example.com/sitemap.xml
+        ROBOTS
+      end
+
+      it { is_expected.to eq expected }
     end
-    let(:sitemap_url) { 'http://example.com/sitemap.xml' }
-    let(:expected) do
-      <<~ROBOTS
-        User-Agent: Googlebot
-        Disallow: /tmp/*
-        Disallow: /something/dir/file_disallow.html
-        Allow: /allow/*
-        Allow: /something/dir/file_allow.html
 
-        User-Agent: Googlebot-Image
-        Disallow: /tmp/*
-        Disallow: /something/dir/file_disallow.html
-        Allow: /allow/*
-        Allow: /something/dir/file_allow.html
+    context 'without options' do
+      let(:rules) { nil }
+      let(:sitemap_uri) { nil }
 
-        Sitemap: http://example.com/sitemap.xml
-      ROBOTS
+      it { is_expected.to be_empty }
     end
-
-    subject do
-      @klass = Middleman::Robots::Generator.new(rules, sitemap_url)
-      @klass.process
-    end
-
-    it { is_expected.to eq expected }
   end
 end

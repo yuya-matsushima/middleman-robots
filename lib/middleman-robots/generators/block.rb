@@ -26,25 +26,25 @@ module Middleman
         def user_agent
           user_agent = rule[:user_agent].presence || rule['user-agent'].presence || '*'
           unless user_agent.is_a? String || user_agent.nil?
-            raise ArgumentError.new('`user_agent` or `user-agent` option must be String')
+            raise ArgumentError, '`user_agent` or `user-agent` option must be String or nil'
           end
 
           "User-Agent: #{user_agent}"
         end
 
         def disallow
-          return nil if !rule.key?(:disallow) || rule[:disallow].blank?
+          return nil if !rule.key?(:disallow) || rule[:disallow].nil?
           unless rule[:disallow].is_a? Array
-            raise ArgumentError.new('`disallow` option must be Array')
+            raise ArgumentError, '`disallow` option must be Array or nil'
           end
 
           rule[:disallow].map { |path| "Disallow: #{File.join('/', path)}" }
         end
 
         def allow
-          return nil if !rule.key?(:allow) || rule[:allow].blank?
+          return nil if !rule.key?(:allow) || rule[:allow].nil?
           unless rule[:allow].is_a? Array
-            raise ArgumentError.new('`allow` option must be Array')
+            raise ArgumentError, '`allow` option must be Array or nil'
           end
 
           rule[:allow].map { |path| "Allow: #{File.join('/', path)}" }
