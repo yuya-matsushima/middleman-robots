@@ -1,43 +1,40 @@
 module Middleman
   module Robots
-    # Robots Group Class
+    # Group
     #
-    # Group class generate block in robots.txt
+    # Generating Block in robots.txt
     class Group
-      attr_reader :user_agent, :disallow, :allow
+      attr_accessor :rule
 
       def initialize(rule)
-        @user_agent = generate_user_agent(rule)
-        @disallow   = generate_disallow(rule)
-        @allow      = generate_allow(rule)
+        @rule = rule
       end
 
       def text
-        group = []
-        group << "User-Agent: #{@user_agent}" unless @user_agent.empty?
-        group << @disallow.collect { |item| "Disallow: #{item}" }.join("\n") if @disallow.length.positive?
-        group << @allow.collect { |item| "Allow: #{item}" }.join("\n") if @allow.length.positive?
-        group.join("\n") + "\n"
+        [
+          user_agent,
+          disallow,
+          allow,
+        ].compact.join("\n")
       end
 
       private
 
-      def generate_user_agent(rule)
-        return '*' unless rule.key?('user-agent') || rule.key?(:user_agent)
-
-        rule[:user_agent] || rule['user-agent']
+      def user_agent
+        user_agent = rule[:user_agent] || rule['user-agent']  || '*'
+        "User-Agent: #{user_agent}"
       end
 
-      def generate_disallow(rule)
-        return [] unless rule.key?(:disallow)
+      def disallow
+        return nil unless rule.key? :disallow
 
-        rule[:disallow].map { |path| File.join('/', path) }
+        rule[:disallow].map { |path| "Disallow: #{File.join('/', path)}" }
       end
 
-      def generate_allow(rule)
-        return [] unless rule.key?(:allow)
+      def allow
+        return nil unless rule.key? :allow
 
-        rule[:allow].map { |path| File.join('/', path) }
+        rule[:allow].map { |path| "Allow: #{File.join('/', path)}" }
       end
     end
   end

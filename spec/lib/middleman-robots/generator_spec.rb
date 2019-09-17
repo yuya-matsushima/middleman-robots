@@ -1,4 +1,4 @@
-require_relative '../../lib/middleman-robots/generator.rb'
+require 'middleman-robots/generator'
 
 RSpec.describe Middleman::Robots::Generator do
   before do
