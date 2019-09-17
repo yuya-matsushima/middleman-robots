@@ -1,10 +1,10 @@
-require 'middleman-robots/sitemap_uri'
+require 'middleman-robots/generators/sitemap_uri'
 
-RSpec.describe Middleman::Robots::SitemapUri do
+RSpec.describe Middleman::Robots::Generators::SitemapUri do
   describe '#text' do
     subject do
-      @klass = Middleman::Robots::SitemapUri.new(uri)
-      @klass.text
+      klass = described_class.new(uri)
+      klass.text
     end
 
     context 'with uri ' do

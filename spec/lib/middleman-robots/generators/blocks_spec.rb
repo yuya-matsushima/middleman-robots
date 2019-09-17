@@ -1,6 +1,6 @@
-require 'middleman-robots/groups'
+require 'middleman-robots/generators/blocks'
 
-RSpec.describe Middleman::Robots::Groups do
+RSpec.describe Middleman::Robots::Generators::Blocks do
   let(:rules) do
     [
       {
@@ -18,7 +18,7 @@ RSpec.describe Middleman::Robots::Groups do
 
   describe '#text' do
     subject do
-      klass = Middleman::Robots::Groups.new(rules)
+      klass = described_class.new(rules)
       klass.text
     end
 

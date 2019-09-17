@@ -1,5 +1,5 @@
-require 'middleman-robots/group'
-require 'middleman-robots/sitemap_uri'
+require 'middleman-robots/generators/blocks'
+require 'middleman-robots/generators/sitemap_uri'
 
 module Middleman
   module Robots
@@ -14,8 +14,8 @@ module Middleman
 
       def process
         text = [
-          Groups.new(rules).text,
-          SitemapUri.new(sitemap_uri).text
+          Generators::Blocks.new(rules).text,
+          Generators::SitemapUri.new(sitemap_uri).text
         ].compact.join "\n\n"
 
         text + "\n" unless text.nil?

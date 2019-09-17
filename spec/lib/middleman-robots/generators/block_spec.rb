@@ -1,6 +1,6 @@
-require 'middleman-robots/group'
+require 'middleman-robots/generators/block'
 
-RSpec.describe Middleman::Robots::Group do
+RSpec.describe Middleman::Robots::Generators::Block do
   let(:rule) do
     {
       user_agent: 'GoogleBot',
@@ -11,7 +11,7 @@ RSpec.describe Middleman::Robots::Group do
 
   describe '#text' do
     subject do
-      klass = Middleman::Robots::Group.new(rule)
+      klass = described_class.new(rule)
       klass.text
     end
 
