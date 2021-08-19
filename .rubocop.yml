@@ -1,9 +1,10 @@
 AllCops:
+  NewCops: enable
   Exclude:
     - 'pkg/*'
     - 'tmp/**/*'
     - 'vendor/**/*'
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.6
   DisplayCopNames: true
 
 Style/ClassAndModuleChildren:
@@ -16,7 +17,7 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/**/*_spec.rb'
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 100
   Exclude:
     - '*.gemspec'
