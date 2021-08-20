@@ -9,7 +9,6 @@ Feature: Middleman-Robots on build
     And a successfully built app at "basic-app"
     When I cd to "build"
     Then a file named "robots.txt" should exist
-    And the output should contain "== middleman-robots: robots.txt added to resources =="
     And the file "robots.txt" should contain exactly:
       """
       """

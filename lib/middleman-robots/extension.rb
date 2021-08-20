@@ -12,7 +12,7 @@ module Middleman
 
       def manipulate_resource_list(resources)
         write_robots(options)
-        resources <<  Middleman::Sitemap::Resource.new(
+        resources << Middleman::Sitemap::Resource.new(
           app.sitemap,
           'robots.txt',
           tmp_path
